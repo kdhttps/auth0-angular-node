@@ -9,7 +9,7 @@ Below is the solution for to get Access Token as JWT and JWT verification with N
 ## JWT Access Token
 1. Need to use audience
 
-2. Configuration in my angular app. All the keys are case sensitive.
+2. Configuration in angular app. All the keys are case sensitive. Use `environment.ts` file to store credentials.
 ```
 auth0 = new auth0.WebAuth({
     clientID: <your_client_id>',
@@ -21,6 +21,16 @@ auth0 = new auth0.WebAuth({
     scope: 'openid profile email'
 });
 ```
+
+3. Auth0 Client Configuration
+
+- Client settings
+
+![client](docs/client.png)
+
+- Audience URL
+
+![audience](docs/audience.png)
 
 ## Notes
 
