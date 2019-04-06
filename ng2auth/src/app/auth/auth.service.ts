@@ -12,9 +12,10 @@ export class AuthService {
     clientID: environment.auth.clientID,
     domain: environment.auth.domain,
     responseType: 'token id_token',
-    redirectUri: environment.auth.redirect,
+    redirectUri: environment.auth.redirectUri,
     audience: environment.auth.audience,
-    scope: environment.auth.scope
+    scope: environment.auth.scope,
+    logoutRedirect: environment.auth.scope,
   });
   // Store authentication data
   expiresAt: number;

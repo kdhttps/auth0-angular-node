@@ -11,14 +11,15 @@ Below is the solution for to get Access Token as JWT and JWT verification with N
 
 2. Configuration in my angular app. All the keys are case sensitive.
 ```
-{
+auth0 = new auth0.WebAuth({
     clientID: <your_client_id>',
     domain: '<your.auth0.com>',
+    responseType: 'token id_token',
     audience: 'https://<your.auth0.com>/api/v2/',
-    redirect: 'http://localhost:4200/callback',
+    redirectUri: 'http://localhost:4200/callback',
     logoutRedirect: 'http://localhost:4200',
     scope: 'openid profile email'
-}
+});
 ```
 
 ## Notes

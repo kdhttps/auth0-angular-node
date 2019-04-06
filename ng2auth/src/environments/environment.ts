@@ -8,7 +8,7 @@ export const environment = {
     clientID: '<your_client_id>',
     domain: '<your.auth0.com>', // e.g., you.auth0.com
     audience: 'https://<your.auth0.com>/api/v2/', // e.g., http://localhost:3001
-    redirect: 'http://localhost:4200/callback',
+    redirectUri: 'http://localhost:4200/callback',
     logoutRedirect: 'http://localhost:4200',
     scope: 'openid profile email'
   }
