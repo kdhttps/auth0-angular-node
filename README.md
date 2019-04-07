@@ -32,7 +32,7 @@ auth0 = new auth0.WebAuth({
 
 ![audience](docs/audience.png)
 
-## Notes
+### Notes
 
 1. If you want access token as JWT then you must have to set audience.
 2. Set APIs https://<your.auth0.com>/api/v2/ in audience as given above example. Userinfo endpoint not working for me.
@@ -53,3 +53,29 @@ const authCheck = jwt({
 });
 ```
 5. In the URL / is required at last. https://<your.auth0.com>/api/v2/ and https://<your.auth0.com>/
+
+## Get Roles in Userinfo
+
+1. Add roles and assign roles to users using auth0 dashboard.
+
+2. Add rules in your auth0. 
+```
+function (user, context, callback) {
+
+  // Roles should only be set to verified users.
+  if (!user.email || !user.email_verified) {
+    return callback(null, user, context);
+  }
+
+  user.app_metadata = user.app_metadata || {};
+  user.app_metadata.roles = context.authorization.roles;
+  auth0.users.updateAppMetadata(user.user_id, user.app_metadata)
+    .then(function () {
+      context.idToken['https://example.com/roles'] = user.app_metadata.roles;
+      callback(null, user, context);
+    })
+    .catch(function (err) {
+      callback(err);
+    });
+}
+```
